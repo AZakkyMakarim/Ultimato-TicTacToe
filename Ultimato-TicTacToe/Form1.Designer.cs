@@ -122,6 +122,7 @@
             this.b75 = new System.Windows.Forms.Button();
             this.b74 = new System.Windows.Forms.Button();
             this.b73 = new System.Windows.Forms.Button();
+            this.resultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -139,7 +140,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newGameToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.resultToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(982, 28);
@@ -1430,6 +1432,13 @@
             this.b73.UseVisualStyleBackColor = true;
             this.b73.Click += new System.EventHandler(this.button_Click9);
             // 
+            // resultToolStripMenuItem
+            // 
+            this.resultToolStripMenuItem.Name = "resultToolStripMenuItem";
+            this.resultToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
+            this.resultToolStripMenuItem.Text = "Result";
+            this.resultToolStripMenuItem.Click += new System.EventHandler(this.resultToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1564,5 +1573,6 @@
         private Button b75;
         private Button b74;
         private Button b73;
+        private ToolStripMenuItem resultToolStripMenuItem;
     }
 }

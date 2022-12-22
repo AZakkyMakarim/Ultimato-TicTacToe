@@ -1,8 +1,12 @@
+using System.Runtime.Intrinsics.X86;
+
 namespace Ultimato_TicTacToe
 {
     public partial class Form1 : Form
     {
-        char who = 'O';
+        char player = 'O';
+        int skorO = 0;
+        int skorX = 0;
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +23,7 @@ namespace Ultimato_TicTacToe
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            who = 'O';
+            player = 'O';
             b1.Enabled = true; b1.Text = ""; b1.BackColor = Color.White;
             b2.Enabled = true; b2.Text = ""; b2.BackColor = Color.White;
             b3.Enabled = true; b3.Text = ""; b3.BackColor = Color.White;
@@ -102,22 +106,30 @@ namespace Ultimato_TicTacToe
             b80.Enabled = true; b80.Text = ""; b80.BackColor = Color.White;
             b81.Enabled = true; b81.Text = ""; b81.BackColor = Color.White;
             tableLayoutPanel1.Enabled = true;
+            tableLayoutPanel2.Enabled = false;
+            tableLayoutPanel3.Enabled = false;
+            tableLayoutPanel4.Enabled = false;
+            tableLayoutPanel5.Enabled = false;
+            tableLayoutPanel6.Enabled = false;
+            tableLayoutPanel7.Enabled = false;
+            tableLayoutPanel8.Enabled = false;
+            tableLayoutPanel9.Enabled = false;
         }
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Rulesnya simple, siapa yang dapat 3 kotak beruntun, dia yang menang");
+            MessageBox.Show("Rulesnya simple, siapa yang skornya lebih banyak, dia yang menang");
         }
 
         private void button_Click1(object sender, EventArgs e)
         {
             Button bt = sender as Button;
             bt.Enabled = false;
-            if(who == 'O')
+            if (player == 'O')
             {
                 bt.BackColor = Color.Aquamarine;
                 bt.Text = "O";
-                if((b1.Text == b2.Text && b2.Text == b3.Text && b2.Text != "") ||
+                if ((b1.Text == b2.Text && b2.Text == b3.Text && b2.Text != "") ||
                     (b4.Text == b5.Text && b5.Text == b6.Text && b5.Text != "") ||
                     (b7.Text == b8.Text && b8.Text == b9.Text && b8.Text != "") ||
                     (b1.Text == b4.Text && b4.Text == b7.Text && b4.Text != "") ||
@@ -135,10 +147,11 @@ namespace Ultimato_TicTacToe
                     b7.Enabled = false; b7.Text = "O"; b7.BackColor = Color.Aquamarine;
                     b8.Enabled = false; b8.Text = "O"; b8.BackColor = Color.Aquamarine;
                     b9.Enabled = false; b9.Text = "O"; b9.BackColor = Color.Aquamarine;
+                    skorO++;
                 }
-                who = 'X';
+                player = 'X';
             }
-            else if(who == 'X')
+            else if (player == 'X')
             {
                 bt.BackColor = Color.OrangeRed;
                 bt.Text = "X";
@@ -160,16 +173,22 @@ namespace Ultimato_TicTacToe
                     b7.Enabled = false; b7.Text = "X"; b7.BackColor = Color.OrangeRed;
                     b8.Enabled = false; b8.Text = "X"; b8.BackColor = Color.OrangeRed;
                     b9.Enabled = false; b9.Text = "X"; b9.BackColor = Color.OrangeRed;
+                    skorX++;
                 }
-                who = 'O';
+                player = 'O';
             }
-            tableLayoutPanel2.Enabled = true;
+            if (b1.Enabled == false && b2.Enabled == false && b3.Enabled == false &&
+                b4.Enabled == false && b5.Enabled == false && b6.Enabled == false &&
+                b7.Enabled == false && b8.Enabled == false && b9.Enabled == false)
+            {
+                tableLayoutPanel2.Enabled = true;
+            }
         }
         private void button_Click2(object sender, EventArgs e)
         {
             Button bt = sender as Button;
             bt.Enabled = false;
-            if (who == 'O')
+            if (player == 'O')
             {
                 bt.BackColor = Color.Aquamarine;
                 bt.Text = "O";
@@ -191,10 +210,11 @@ namespace Ultimato_TicTacToe
                     b16.Enabled = false; b16.Text = "O"; b16.BackColor = Color.Aquamarine;
                     b17.Enabled = false; b17.Text = "O"; b17.BackColor = Color.Aquamarine;
                     b18.Enabled = false; b18.Text = "O"; b18.BackColor = Color.Aquamarine;
+                    skorO++;
                 }
-                who = 'X';
+                player = 'X';
             }
-            else if (who == 'X')
+            else if (player == 'X')
             {
                 bt.BackColor = Color.OrangeRed;
                 bt.Text = "X";
@@ -216,17 +236,23 @@ namespace Ultimato_TicTacToe
                     b16.Enabled = false; b16.Text = "X"; b16.BackColor = Color.OrangeRed;
                     b17.Enabled = false; b17.Text = "X"; b17.BackColor = Color.OrangeRed;
                     b18.Enabled = false; b18.Text = "X"; b18.BackColor = Color.OrangeRed;
+                    skorX++;
                 }
-                who = 'O';
+                player = 'O';
             }
-            tableLayoutPanel3.Enabled = true;
+            if (b10.Enabled == false && b11.Enabled == false && b12.Enabled == false &&
+                b13.Enabled == false && b14.Enabled == false && b15.Enabled == false &&
+                b16.Enabled == false && b17.Enabled == false && b18.Enabled == false)
+            {
+                tableLayoutPanel3.Enabled = true;
+            }
         }
 
         private void button_Click3(object sender, EventArgs e)
         {
             Button bt = sender as Button;
             bt.Enabled = false;
-            if (who == 'O')
+            if (player == 'O')
             {
                 bt.BackColor = Color.Aquamarine;
                 bt.Text = "O";
@@ -248,10 +274,11 @@ namespace Ultimato_TicTacToe
                     b25.Enabled = false; b25.Text = "O"; b25.BackColor = Color.Aquamarine;
                     b26.Enabled = false; b26.Text = "O"; b26.BackColor = Color.Aquamarine;
                     b27.Enabled = false; b27.Text = "O"; b27.BackColor = Color.Aquamarine;
+                    skorO++;
                 }
-                who = 'X';
+                player = 'X';
             }
-            else if (who == 'X')
+            else if (player == 'X')
             {
                 bt.BackColor = Color.OrangeRed;
                 bt.Text = "X";
@@ -273,17 +300,23 @@ namespace Ultimato_TicTacToe
                     b25.Enabled = false; b25.Text = "X"; b25.BackColor = Color.OrangeRed;
                     b26.Enabled = false; b26.Text = "X"; b26.BackColor = Color.OrangeRed;
                     b27.Enabled = false; b27.Text = "X"; b27.BackColor = Color.OrangeRed;
+                    skorX++;
                 }
-                who = 'O';
+                player = 'O';
             }
-            tableLayoutPanel4.Enabled = true;
+            if (b19.Enabled == false && b20.Enabled == false && b21.Enabled == false &&
+                b22.Enabled == false && b23.Enabled == false && b24.Enabled == false &&
+                b25.Enabled == false && b26.Enabled == false && b27.Enabled == false)
+            {
+                tableLayoutPanel4.Enabled = true;
+            }
         }
 
         private void button_Click4(object sender, EventArgs e)
         {
             Button bt = sender as Button;
             bt.Enabled = false;
-            if (who == 'O')
+            if (player == 'O')
             {
                 bt.BackColor = Color.Aquamarine;
                 bt.Text = "O";
@@ -305,10 +338,11 @@ namespace Ultimato_TicTacToe
                     b34.Enabled = false; b34.Text = "O"; b34.BackColor = Color.Aquamarine;
                     b35.Enabled = false; b35.Text = "O"; b35.BackColor = Color.Aquamarine;
                     b36.Enabled = false; b36.Text = "O"; b36.BackColor = Color.Aquamarine;
+                    skorO++;
                 }
-                who = 'X';
+                player = 'X';
             }
-            else if (who == 'X')
+            else if (player == 'X')
             {
                 bt.BackColor = Color.OrangeRed;
                 bt.Text = "X";
@@ -330,17 +364,23 @@ namespace Ultimato_TicTacToe
                     b34.Enabled = false; b34.Text = "X"; b34.BackColor = Color.OrangeRed;
                     b35.Enabled = false; b35.Text = "X"; b35.BackColor = Color.OrangeRed;
                     b36.Enabled = false; b36.Text = "X"; b36.BackColor = Color.OrangeRed;
+                    skorX++;
                 }
-                who = 'O';
+                player = 'O';
             }
-            tableLayoutPanel5.Enabled = true;
+            if (b28.Enabled == false && b29.Enabled == false && b30.Enabled == false &&
+                b31.Enabled == false && b32.Enabled == false && b33.Enabled == false &&
+                b34.Enabled == false && b35.Enabled == false && b36.Enabled == false)
+            {
+                tableLayoutPanel5.Enabled = true;
+            }
         }
 
         private void button_Click5(object sender, EventArgs e)
         {
             Button bt = sender as Button;
             bt.Enabled = false;
-            if (who == 'O')
+            if (player == 'O')
             {
                 bt.BackColor = Color.Aquamarine;
                 bt.Text = "O";
@@ -362,10 +402,11 @@ namespace Ultimato_TicTacToe
                     b43.Enabled = false; b43.Text = "O"; b43.BackColor = Color.Aquamarine;
                     b44.Enabled = false; b44.Text = "O"; b44.BackColor = Color.Aquamarine;
                     b45.Enabled = false; b45.Text = "O"; b45.BackColor = Color.Aquamarine;
+                    skorO++;
                 }
-                who = 'X';
+                player = 'X';
             }
-            else if (who == 'X')
+            else if (player == 'X')
             {
                 bt.BackColor = Color.OrangeRed;
                 bt.Text = "X";
@@ -387,17 +428,23 @@ namespace Ultimato_TicTacToe
                     b43.Enabled = false; b43.Text = "X"; b43.BackColor = Color.OrangeRed;
                     b44.Enabled = false; b44.Text = "X"; b44.BackColor = Color.OrangeRed;
                     b45.Enabled = false; b45.Text = "X"; b45.BackColor = Color.OrangeRed;
+                    skorX++;
                 }
-                who = 'O';
+                player = 'O';
             }
-            tableLayoutPanel6.Enabled = true;
+            if (b37.Enabled == false && b38.Enabled == false && b39.Enabled == false &&
+                b40.Enabled == false && b41.Enabled == false && b42.Enabled == false &&
+                b43.Enabled == false && b44.Enabled == false && b45.Enabled == false)
+            {
+                tableLayoutPanel6.Enabled = true;
+            }
         }
 
         private void button_Click6(object sender, EventArgs e)
         {
             Button bt = sender as Button;
             bt.Enabled = false;
-            if (who == 'O')
+            if (player == 'O')
             {
                 bt.BackColor = Color.Aquamarine;
                 bt.Text = "O";
@@ -419,10 +466,11 @@ namespace Ultimato_TicTacToe
                     b52.Enabled = false; b52.Text = "O"; b52.BackColor = Color.Aquamarine;
                     b53.Enabled = false; b53.Text = "O"; b53.BackColor = Color.Aquamarine;
                     b54.Enabled = false; b54.Text = "O"; b54.BackColor = Color.Aquamarine;
+                    skorO++;
                 }
-                who = 'X';
+                player = 'X';
             }
-            else if (who == 'X')
+            else if (player == 'X')
             {
                 bt.BackColor = Color.OrangeRed;
                 bt.Text = "X";
@@ -444,17 +492,23 @@ namespace Ultimato_TicTacToe
                     b52.Enabled = false; b52.Text = "X"; b52.BackColor = Color.OrangeRed;
                     b53.Enabled = false; b53.Text = "X"; b53.BackColor = Color.OrangeRed;
                     b54.Enabled = false; b54.Text = "X"; b54.BackColor = Color.OrangeRed;
+                    skorX++;
                 }
-                who = 'O';
+                player = 'O';
             }
-            tableLayoutPanel7.Enabled = true;
+            if (b46.Enabled == false && b47.Enabled == false && b48.Enabled == false &&
+                b49.Enabled == false && b50.Enabled == false && b51.Enabled == false &&
+                b52.Enabled == false && b53.Enabled == false && b54.Enabled == false)
+            {
+                tableLayoutPanel7.Enabled = true;
+            }
         }
 
         private void button_Click7(object sender, EventArgs e)
         {
             Button bt = sender as Button;
             bt.Enabled = false;
-            if (who == 'O')
+            if (player == 'O')
             {
                 bt.BackColor = Color.Aquamarine;
                 bt.Text = "O";
@@ -476,10 +530,11 @@ namespace Ultimato_TicTacToe
                     b61.Enabled = false; b61.Text = "O"; b61.BackColor = Color.Aquamarine;
                     b62.Enabled = false; b62.Text = "O"; b62.BackColor = Color.Aquamarine;
                     b63.Enabled = false; b63.Text = "O"; b63.BackColor = Color.Aquamarine;
+                    skorO++;
                 }
-                who = 'X';
+                player = 'X';
             }
-            else if (who == 'X')
+            else if (player == 'X')
             {
                 bt.BackColor = Color.OrangeRed;
                 bt.Text = "X";
@@ -501,17 +556,23 @@ namespace Ultimato_TicTacToe
                     b61.Enabled = false; b61.Text = "X"; b61.BackColor = Color.OrangeRed;
                     b62.Enabled = false; b62.Text = "X"; b62.BackColor = Color.OrangeRed;
                     b63.Enabled = false; b63.Text = "X"; b63.BackColor = Color.OrangeRed;
+                    skorX++;
                 }
-                who = 'O';
+                player = 'O';
             }
-            tableLayoutPanel8.Enabled = true;
+            if (b55.Enabled == false && b56.Enabled == false && b57.Enabled == false &&
+                b58.Enabled == false && b59.Enabled == false && b60.Enabled == false &&
+                b61.Enabled == false && b62.Enabled == false && b63.Enabled == false)
+            {
+                tableLayoutPanel8.Enabled = true;
+            }
         }
 
         private void button_Click8(object sender, EventArgs e)
         {
             Button bt = sender as Button;
             bt.Enabled = false;
-            if (who == 'O')
+            if (player == 'O')
             {
                 bt.BackColor = Color.Aquamarine;
                 bt.Text = "O";
@@ -533,10 +594,11 @@ namespace Ultimato_TicTacToe
                     b70.Enabled = false; b70.Text = "O"; b70.BackColor = Color.Aquamarine;
                     b71.Enabled = false; b71.Text = "O"; b71.BackColor = Color.Aquamarine;
                     b72.Enabled = false; b72.Text = "O"; b72.BackColor = Color.Aquamarine;
+                    skorO++;
                 }
-                who = 'X';
+                player = 'X';
             }
-            else if (who == 'X')
+            else if (player == 'X')
             {
                 bt.BackColor = Color.OrangeRed;
                 bt.Text = "X";
@@ -558,17 +620,23 @@ namespace Ultimato_TicTacToe
                     b70.Enabled = false; b70.Text = "X"; b70.BackColor = Color.OrangeRed;
                     b71.Enabled = false; b71.Text = "X"; b71.BackColor = Color.OrangeRed;
                     b72.Enabled = false; b72.Text = "X"; b72.BackColor = Color.OrangeRed;
+                    skorX++;
                 }
-                who = 'O';
+                player = 'O';
             }
-            tableLayoutPanel9.Enabled = true;
+            if (b64.Enabled == false && b65.Enabled == false && b66.Enabled == false &&
+                b67.Enabled == false && b68.Enabled == false && b69.Enabled == false &&
+                b70.Enabled == false && b71.Enabled == false && b72.Enabled == false)
+            {
+                tableLayoutPanel9.Enabled = true;
+            }
         }
 
-        private void button_Click9(object sender, EventArgs e)
+        public void button_Click9(object sender, EventArgs e)
         {
             Button bt = sender as Button;
             bt.Enabled = false;
-            if (who == 'O')
+            if (player == 'O')
             {
                 bt.BackColor = Color.Aquamarine;
                 bt.Text = "O";
@@ -590,10 +658,11 @@ namespace Ultimato_TicTacToe
                     b79.Enabled = false; b79.Text = "O"; b79.BackColor = Color.Aquamarine;
                     b80.Enabled = false; b80.Text = "O"; b80.BackColor = Color.Aquamarine;
                     b81.Enabled = false; b81.Text = "O"; b81.BackColor = Color.Aquamarine;
+                    skorO++;
                 }
-                who = 'X';
+                player = 'X';
             }
-            else if (who == 'X')
+            else if (player == 'X')
             {
                 bt.BackColor = Color.OrangeRed;
                 bt.Text = "X";
@@ -615,11 +684,11 @@ namespace Ultimato_TicTacToe
                     b79.Enabled = false; b79.Text = "X"; b79.BackColor = Color.OrangeRed;
                     b80.Enabled = false; b80.Text = "X"; b80.BackColor = Color.OrangeRed;
                     b81.Enabled = false; b81.Text = "X"; b81.BackColor = Color.OrangeRed;
+                    skorX++;
                 }
-                who = 'O';
+                player = 'O';
             }
         }
-
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -633,6 +702,18 @@ namespace Ultimato_TicTacToe
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void resultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (skorO > skorX)
+            {
+                MessageBox.Show("O menang dengan skor ", skorO.ToString());
+            }
+            else if (skorO < skorX)
+            {
+                MessageBox.Show("X menang dengan skor ", skorX.ToString());
+            }
         }
     }
 }
