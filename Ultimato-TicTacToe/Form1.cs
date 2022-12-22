@@ -1,4 +1,5 @@
 using System.Runtime.Intrinsics.X86;
+using System.Timers;
 
 namespace Ultimato_TicTacToe
 {
@@ -7,6 +8,7 @@ namespace Ultimato_TicTacToe
         char player = 'O';
         int skorO = 0;
         int skorX = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -706,13 +708,19 @@ namespace Ultimato_TicTacToe
 
         private void resultToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            String skorAkhirO = skorO.ToString();
+            String skorAkhirX = skorX.ToString();
             if (skorO > skorX)
             {
-                MessageBox.Show("O menang dengan skor ", skorO.ToString());
+                MessageBox.Show($"O menang dengan skor {skorAkhirO} : {skorAkhirX}");
             }
             else if (skorO < skorX)
             {
-                MessageBox.Show("X menang dengan skor ", skorX.ToString());
+                MessageBox.Show($"X menang dengan skor {skorAkhirX} : {skorAkhirO}");
+            }
+            else
+            {
+                MessageBox.Show($"Hasilnya draw dengan skor {skorAkhirO} : {skorAkhirX}");
             }
         }
     }
